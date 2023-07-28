@@ -1,0 +1,6 @@
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\bin\Debug\Datos.dll
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\bin\Debug\Datos.pdb
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Debug\Datos.dll
+C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Debug\Datos.pdb
