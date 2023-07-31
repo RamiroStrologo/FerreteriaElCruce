@@ -190,3 +190,11 @@ ALTER TABLE Venta ADD usr_id int FOREIGN KEY (usr_id) REFERENCES usuario
 ALTER TABLE Compra ADD usr_id int FOREIGN KEY (usr_id) REFERENCES usuario
 
 SELECT v.fecha_venta, p.nombre_producto, v.cantidad_prod_vendida, v.total_vendido, v.venta_nro, u.nombre_usuario FROM Venta v INNER JOIN Producto p ON v.producto_id = p.producto_id INNER JOIN usuario u ON u.usr_id = v.usr_id Order BY v.venta_nro DESC 
+
+
+SELECT * FROM Producto
+SELECT * FROM Venta
+
+SELECT p.producto_id, p.producto_codigo, p.nombre_producto, p.precio_compra, v.cantidad_prod_vendida, v.total_vendido, v.facturar_venta, (SELECT SUM(total_vendido) FROM Venta WHERE venta_nro = 9), p.cantidad_producto FROM Producto p INNER JOIN Venta v ON v.producto_id = p.producto_id WHERE v.venta_nro = 9
+
+UPDATE Producto SET cantidad_producto = cantidad_producto + 1

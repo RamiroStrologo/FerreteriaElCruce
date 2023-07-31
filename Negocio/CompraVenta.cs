@@ -54,6 +54,21 @@ namespace Negocio
         {
             compraVentaD = new CompraVentaDatos();
             return compraVentaD.ObtenerLogVentas();
-        } 
+        }
+        
+        public DataTable ObtenerVentaYRestablecer()
+        {
+            compraVentaD = new CompraVentaDatos();
+            DataTable pIdVenAnt = new DataTable();
+            DataTable ventaAnt = new DataTable();
+            pIdVenAnt = compraVentaD.ObtenerProductosVentaAnt(nroV);
+            for (int i = 0; i <= pIdVenAnt.Rows.Count - 1; i++)
+            {
+                compraVentaD.RestablecerStockVentAnt(Convert.ToInt32(pIdVenAnt.Rows[i][0]), Convert.ToInt32(pIdVenAnt.Rows[i][1]));
+            }
+            ventaAnt = compraVentaD.ObtenerVentasPorNumero(nroV);
+            compraVentaD.RestablecerVentAnt(nroV);
+            return ventaAnt;
+        }
     }
 }

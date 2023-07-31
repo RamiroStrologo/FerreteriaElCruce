@@ -89,6 +89,7 @@ namespace FerreteriaElCruce
                 btnVentasAnt.Visible = true;
                 txtVentaAnt.Visible = true;
                 lnkVentas.Visible = true;
+                btnAceptar.Enabled = false;
                 lblNumeroVenta.Text += " " + producto.GenerarNroVenta().ToString();
             }
 
@@ -113,12 +114,18 @@ namespace FerreteriaElCruce
             }
             else
             {
-                dr = MessageBox.Show(this, "¿Desea realizar la venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                if (chkDescVenta.Checked)
                 {
-                    resultado = AltaCompra();
-                    resultadoAlta();
+                    dr = MessageBox.Show(this, "¿Desea realizar la venta?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        resultado = AltaCompra();
+                        resultadoAlta();
+                    }
                 }
+                else
+                    MessageBox.Show(this, "Debe cerrar la venta antes de continuar con la operación", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        
             }
 
         }
@@ -280,6 +287,37 @@ namespace FerreteriaElCruce
                 lblNumeroVenta.Text = "Número de Venta: " + producto.GenerarNroVenta().ToString();
             }
         }
+        private void CargarVentaAnt(DataTable carrito)
+        {
+            for(int i = 0; i <= carrito.Rows.Count - 1; i++)
+            {
+                ListViewItem item = new ListViewItem(carrito.Rows[i][0].ToString());
+                item.SubItems.Add(carrito.Rows[i][1].ToString());
+                item.SubItems.Add(carrito.Rows[i][2].ToString());
+                item.SubItems.Add(Convert.ToSingle(carrito.Rows[i][3]).ToString("C", CultureInfo.GetCultureInfo("es-AR")));
+                item.SubItems.Add(carrito.Rows[i][4].ToString());
+                item.SubItems.Add(Convert.ToSingle(carrito.Rows[i][5]).ToString("C", CultureInfo.GetCultureInfo("es-AR")));
+                if (Convert.ToBoolean(carrito.Rows[i][6]))
+                    item.SubItems.Add("B");
+                else
+                    item.SubItems.Add("N");
+                item.SubItems.Add("");
+                lsvCarrito.Items.Add(item);
+            }
+            ListViewItem totalItem = new ListViewItem("");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(" ");
+            totalItem.SubItems.Add(Convert.ToSingle(carrito.Rows[carrito.Rows.Count - 1][7]).ToString("C", CultureInfo.GetCultureInfo("es-AR")));
+            lsvCarrito.Items.Add(totalItem);
+
+            // Asegurarse de que la fila de "Total" se muestre en la parte inferior del ListView
+            lsvCarrito.Items[lsvCarrito.Items.Count - 1].EnsureVisible();
+            totalC = Convert.ToSingle(carrito.Rows[carrito.Rows.Count - 1][7]);
+        }
         private void ResumenVenta()
         {
             if (chkDescVenta.Checked)
@@ -404,7 +442,24 @@ namespace FerreteriaElCruce
             if (dr == DialogResult.OK)
                 ResetForm();
         }
+        private void btnVentasAnt_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtVentaAnt.Text))
+            {
+                DialogResult dg = MessageBox.Show(this, "¿Desea cargar la venta indicada? Se perderá la operación actual y podrá modificar la seleccionada. Si no desea realizar cambios TOQUE el boton Aceptar y realicela de nuevo. Se le cargará un nuevo Numero de venta", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dg == DialogResult.Yes)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    compraVenta = new CompraVenta();
+                    compraVenta.nroV = Convert.ToInt32(txtVentaAnt.Text);
+                    DataTable dt = compraVenta.ObtenerVentaYRestablecer();
+                    ResetForm();
+                    CargarVentaAnt(dt);
+                    Cursor.Current = Cursors.Default;
+                }
+            }
 
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if(cmbProducto.SelectedIndex != -1)
@@ -502,7 +557,7 @@ namespace FerreteriaElCruce
                 item.SubItems.Add("N");
             item.SubItems.Add("");
             lsvCarrito.Items.Add(item);
-            lsvCarrito.Items[0].SubItems[5].BackColor = Color.Black;
+            //lsvCarrito.Items[0].SubItems[5].BackColor = Color.Black;
             totalC += subtotalC;
 
             // Actualizar la fila de "Total" con el valor de "Total" calculado
@@ -543,8 +598,8 @@ namespace FerreteriaElCruce
             {
                 Cursor.Current = Cursors.WaitCursor;
                 ConfirmarOperacion();
-                Cursor.Current = Cursors.Default;
                 ResetForm();
+                Cursor.Current = Cursors.Default;
             }
             else
                 MessageBox.Show(this, "Debe agregar productos al carrito para realizar la operación", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -630,6 +685,7 @@ namespace FerreteriaElCruce
                     btnAgregar.Enabled = false;
                     btnQuitar.Enabled = false;
                     txtDescuento.Enabled = true;
+                    btnAceptar.Enabled = true;
                     ListaOriginalVenta();
                 }
                 else
@@ -646,6 +702,7 @@ namespace FerreteriaElCruce
                 rdbNegro.Enabled = true;
                 btnAgregar.Enabled = true;
                 btnQuitar.Enabled = true;
+                btnAceptar.Enabled = false;
                 if (lsvCarrito.Items.Count > 1)
                 {
                     for (int i = 0; i <= lsvCarrito.Items.Count - 2; i++)
