@@ -86,6 +86,8 @@ namespace FerreteriaElCruce
             {
                 e.Handled = true; // Cancelar el evento para evitar que el carácter se muestre en el TextBox
             }
+            else if(txtAumento.Text == "0")
+                txtAumento.SelectionStart = 1;
         }
 
         private void txtAumento_TextChanged(object sender, EventArgs e)
@@ -207,31 +209,10 @@ namespace FerreteriaElCruce
             cmbMarcasMod.DataSource = null;
             txtAumento.Text = "0";
             dgvProductosMarca.Rows.Clear();
+            if (rdbMarca.Checked)
+                lblAtributo.Text = "Marcas:";
+            else
+                lblAtributo.Text = "Prov.:";
         }
-
-
-        //VER EN CONEXION
-        //private void EjecutarSPModPrecioXMarca()
-        //{
-        //    producto = new Producto();
-        //    DataTable dt = new DataTable();
-
-        //    foreach (DataGridViewColumn col in dgvProductosMarca.Columns)
-        //    {
-        //        Type colType = col.ValueType ?? typeof(object);
-        //        dt.Columns.Add(col.HeaderText, colType);
-        //    }
-
-        //    foreach (DataGridViewRow dgvRow in dgvProductosMarca.Rows)
-        //    {
-        //        DataRow row = dt.NewRow();
-        //        for (int i = 0; i < dgvRow.Cells.Count; i++)
-        //        {
-        //            row[i] = dgvRow.Cells[i].Value;
-        //        }
-        //        dt.Rows.Add(row);
-        //    }
-
-        //}
     }
 }

@@ -408,10 +408,20 @@ namespace FerreteriaElCruce
 
         private void txtPrecioCompraProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Verificar si el carácter presionado es un número o la tecla de retroceso
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            // Verificar si el carácter presionado es un número, la tecla de retroceso o una coma
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
             {
                 e.Handled = true; // Cancelar el evento para evitar que el carácter se muestre en el TextBox
+            }
+
+            // Permitir solo una coma en el TextBox si hay al menos un número
+            if (e.KeyChar == ',')
+            {
+                var textBox = sender as TextBox;
+                if (textBox.Text.Contains(',') || textBox.Text.Length == 0 || textBox.SelectionLength > 0)
+                {
+                    e.Handled = true; // Cancelar el evento para evitar que se ingrese la coma
+                }
             }
         }
 

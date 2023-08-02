@@ -64,7 +64,7 @@ contrasenia varchar(max),
 activo bit
 )
 alter table usuario ADD activo bit
-update usuario SET activo = 1
+update usuario SET contrasenia = '1234' where activo = 1
 select * from usuario
 delete from usuario
 

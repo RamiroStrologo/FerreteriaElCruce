@@ -137,6 +137,7 @@
             this.Name = "FormSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Iniciar Sesión";
+            this.Load += new System.EventHandler(this.FormSesion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picLogoUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -27,7 +27,7 @@ namespace FerreteriaElCruce
                 usr = new Usuario();
                 usr.usuario = txtUsuario.Text;
                 usr.contrasenia = txtContrasenia.Text;
-                verify = usr.DesEncriptar();
+                verify = usr.VerificarPassword();
                 if (verify)
                 {
                     FormLuancher frmL = Application.OpenForms.OfType<FormLuancher>().FirstOrDefault();
@@ -56,6 +56,11 @@ namespace FerreteriaElCruce
             }
             else
                 lblErr.Visible = false;
+        }
+
+        private void FormSesion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

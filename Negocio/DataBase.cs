@@ -26,10 +26,10 @@ namespace Negocio
         //    Conexion con = new Conexion();
         //    con.CreateDataBase();
         //}
-        //public void UpdateDb()
-        //{
-        //    Conexion con = new Conexion();
-        //    con.UpdateBD();
-        //}
+        public void UpdateDb()
+        {
+            Conexion con = new Conexion();
+            con.UpdateBD();
+        }
     }
 }

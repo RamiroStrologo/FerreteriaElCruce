@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BCrypt.Net;
 using Datos;
 
 namespace Negocio
@@ -17,27 +16,11 @@ namespace Negocio
         public string usuario { get; set; }
         public string contrasenia { get; set; }
         bool ok;
-        string hashedPassword;
-
         public Usuario()
         {
             usrD = new UsuarioDatos();
         }
 
-        public void Encriptar()
-        {
-            usrD = new UsuarioDatos();
-            hashedPassword = BCrypt.Net.BCrypt.HashPassword(contrasenia);
-            // hashedPassword ahora contiene la contraseña encriptada
-        }
-        public bool DesEncriptar()
-        {
-            usrD = new UsuarioDatos();
-            hashedPassword = usrD.ComprobarContrasenia(usuario).ToString();
-            // Verificar si una contraseña ingresada coincide con la contraseña encriptada
-            bool passwordsMatch = BCrypt.Net.BCrypt.Verify(contrasenia, hashedPassword);
-            return passwordsMatch;
-        }
         public bool ComprobarUsuario()
         {
             object res = usrD.ComprobarUsuario(usuario);
@@ -49,7 +32,15 @@ namespace Negocio
                 return ok = false;
 
         }
-
+        public bool VerificarPassword()
+        {
+            usrD = new UsuarioDatos();
+            object pass = usrD.ComprobarContrasenia(usuario);
+            if (pass.ToString() == contrasenia)
+                return ok = true;
+            else
+            return ok = false;
+        }
         public string IdentificarRol()
         {
             usrD = new UsuarioDatos();
@@ -63,14 +54,12 @@ namespace Negocio
         public int crearUsuario()
         {
             usrD = new UsuarioDatos();
-            Encriptar();
-            return usrD.crearUsuario(usuario, hashedPassword, rol);
+            return usrD.crearUsuario(usuario, contrasenia, rol);
         }
         public int ModificarUsuario()
         {
             usrD = new UsuarioDatos();
-            Encriptar();
-            return usrD.ModificarUsuario(usuario, hashedPassword, rol, usrId);
+            return usrD.ModificarUsuario(usuario, contrasenia, rol, usrId);
         }
         public int EliminarUsuario()
         {

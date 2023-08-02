@@ -14,57 +14,45 @@ namespace Datos
     {
         //Primero se declara el objeto
         public SqlConnection Conector;
-
         //Luego se instancia en el constructor
         public Conexion()
         {
             string server = ".\\" + System.Environment.UserName;
             //Servidor SQL Server - Base de Datos
-            string strConexion = @"Data Source=" + server + ";Initial Catalog=ferrta_elcruce_db;Integrated Security=True";
-            //string strConexion = @"data source=localhost\sqlexpress;initial catalog=ferrta_elcruce_db;integrated security=true";
+            string strConexion = @"data source=" + server + ";initial catalog=ferrta_elcruce_db;integrated security=true";
+            //string strConexion = @"Data Source=.\SQLEXPRESS;initial catalog=ferrta_elcruce_db;integrated security=true";
             this.Conector = new SqlConnection(strConexion);
         }
-        //public void UpdateBD()
-        //{
-        //    string script = @"
-        //            create table usuario(
-        //            usr_id int identity primary key,
-        //            rol varchar(10),
-        //            nombre_usuario varchar(15),
-        //            contrasenia varchar(max),
-        //            activo bit
-        //            )
-        //            GO
-        //            INSERT INTO usuario VALUES ('Admin', 'admin', '$2a$11$ZcnNSZVG.t2JwN/yjaFhGuxXI33QsTfMwBmstazCBd9NdNGZ.2MfK', 1)
-        //            GO
-        //            ALTER TABLE Venta ADD venta_nro int
-        //            GO
-        //            ALTER TABLE Venta ADD usr_id int FOREIGN KEY (usr_id) REFERENCES usuario
-        //            GO
-        //            ALTER TABLE Compra ADD usr_id int FOREIGN KEY (usr_id) REFERENCES usuario";
-        //    string strConexion = @"data source=localhost\sqlexpress;initial catalog=ferrta_elcruce_db;integrated security=true";
-        //    using (SqlConnection connection = new SqlConnection(strConexion))
-        //    {
-        //        try
-        //        {
-        //            string[] commands = script.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
-        //            connection.Open();
-        //            foreach (string commandText in commands)
-        //            {
-        //                using (SqlCommand command = new SqlCommand(commandText, connection))
-        //                {
-        //                    command.ExecuteNonQuery();
-        //                }
-        //            }
-        //            Console.WriteLine("Base de datos creada exitosamente.");
-        //            connection.Close();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine("Error al crear la base de datos: " + ex.Message);
-        //        }
-        //    }
-        //}
+        public void UpdateBD()
+        {
+            string script = @"
+                        USE [ferrta_elcruce_db]
+                        GO
+                        UPDATE usuario SET contrasenia = '1234'
+                        ";
+            string strConexion = @"Data Source=.\SQLEXPRESS;initial catalog=ferrta_elcruce_db;integrated security=true";
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                try
+                {
+                    string[] commands = script.Split(new[] { "GO" }, StringSplitOptions.RemoveEmptyEntries);
+                    connection.Open();
+                    foreach (string commandText in commands)
+                    {
+                        using (SqlCommand command = new SqlCommand(commandText, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    Console.WriteLine("Base de datos creada exitosamente.");
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al crear la base de datos: " + ex.Message);
+                }
+            }
+        }
         //public int ComprobarBDExiste()
         //{
         //    string strConexion = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=master;Integrated Security=True";
@@ -320,7 +308,7 @@ namespace Datos
         //            Console.WriteLine("Error al crear la base de datos: " + ex.Message);
         //        }
         //    }
-        //}
+
 
         public DataTable ObtenerRegistros(string query)
         {

@@ -99,8 +99,8 @@ namespace FerreteriaElCruce
 
         private void FormLuancher_Load(object sender, EventArgs e)
         {
-            //db = new DataBase();
-            //db.UpdateDb();
+            db = new DataBase();
+            db.UpdateDb();
             //int res = db.ComprobarBDExiste();
             //if (res == 0)
             //    MessageBox.Show("Se creó la base de dato con éxito", "Base de datos creada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
