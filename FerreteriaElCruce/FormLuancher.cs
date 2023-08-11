@@ -20,7 +20,7 @@ namespace FerreteriaElCruce
         public FormLuancher()
         {
             InitializeComponent();
-            if (DateTime.Now.ToString("dd/MM/yyyy") == "10/08/2023")
+            if (DateTime.Now.ToString("dd/MM/yyyy") == "20/08/2023")
             {
                 MessageBox.Show("El perdiodo de prueba finalizó. Comunicarse con el Proveedor del Software", "Error: prueba finalizada", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();

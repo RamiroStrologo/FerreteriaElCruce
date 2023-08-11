@@ -68,7 +68,7 @@ namespace Datos
         public int RestablecerVentAnt(int nroV)
         {
             conexion = new Conexion();
-            string query = $"UPDATE Venta SET cantidad_prod_vendida = 0, total_vendido = 0 WHERE venta_nro = {nroV}";
+            string query = $"DELETE FROM Venta WHERE venta_nro = {nroV}";
             return conexion.EjecutarAccion(query);
         }
         public DataTable ObtenerVentasPorNumero(int nroV)

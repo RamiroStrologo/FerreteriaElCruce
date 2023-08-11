@@ -54,14 +54,9 @@ namespace Negocio
                 aumentId = Convert.ToInt32(producto_id.Substring(1));
                 aumentId++;
                 producto_id = producto_id.Replace(producto_id.Substring(1), aumentId.ToString());
-                int numZerosToAdd = 5 - producto_id.Length;
-                string letters = producto_id.Substring(0, 1);
-                string numbers = producto_id.Substring(1);
-                string paddedNumbers = numbers.PadLeft(numZerosToAdd + 1, '0');
-                producto_id = letters + paddedNumbers;
             }
             else
-                producto_id = pasillo + "0001";
+                producto_id = pasillo + "1";
             return producto_id;
         }
         public int ModificarPorducto()

@@ -62,13 +62,19 @@ namespace Negocio
             DataTable pIdVenAnt = new DataTable();
             DataTable ventaAnt = new DataTable();
             pIdVenAnt = compraVentaD.ObtenerProductosVentaAnt(nroV);
-            for (int i = 0; i <= pIdVenAnt.Rows.Count - 1; i++)
+            if (pIdVenAnt.Rows.Count > 0)
             {
-                compraVentaD.RestablecerStockVentAnt(Convert.ToInt32(pIdVenAnt.Rows[i][0]), Convert.ToInt32(pIdVenAnt.Rows[i][1]));
+                for (int i = 0; i <= pIdVenAnt.Rows.Count - 1; i++)
+                {
+                    compraVentaD.RestablecerStockVentAnt(Convert.ToInt32(pIdVenAnt.Rows[i][0]), Convert.ToInt32(pIdVenAnt.Rows[i][1]));
+                }
+                ventaAnt = compraVentaD.ObtenerVentasPorNumero(nroV);
+                compraVentaD.RestablecerVentAnt(nroV);
+                return ventaAnt;
             }
-            ventaAnt = compraVentaD.ObtenerVentasPorNumero(nroV);
-            compraVentaD.RestablecerVentAnt(nroV);
-            return ventaAnt;
+            else
+                return pIdVenAnt;
+    
         }
     }
 }

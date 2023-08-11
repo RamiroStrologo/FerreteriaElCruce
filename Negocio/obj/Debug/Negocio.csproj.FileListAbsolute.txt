@@ -7,12 +7,10 @@ C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\obj\Debug\Negocio.csproj.CoreC
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\obj\Debug\Negocio.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\obj\Debug\Negocio.pdb
-C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\BCrypt.Net-Next.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Buffers.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Memory.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\BCrypt.Net-Next.xml
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Buffers.xml
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Memory.xml
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Negocio\bin\Debug\System.Numerics.Vectors.xml

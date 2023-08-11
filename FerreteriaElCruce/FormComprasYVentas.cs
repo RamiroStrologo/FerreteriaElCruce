@@ -453,9 +453,14 @@ namespace FerreteriaElCruce
                     compraVenta = new CompraVenta();
                     compraVenta.nroV = Convert.ToInt32(txtVentaAnt.Text);
                     DataTable dt = compraVenta.ObtenerVentaYRestablecer();
-                    ResetForm();
-                    CargarVentaAnt(dt);
-                    Cursor.Current = Cursors.Default;
+                    if (dt.Rows.Count > 0)
+                    {
+                        ResetForm();
+                        CargarVentaAnt(dt);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    else
+                        MessageBox.Show(this, "El número de venta no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
