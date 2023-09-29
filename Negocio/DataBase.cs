@@ -9,27 +9,25 @@ namespace Negocio
 {
     public class DataBase
     {
-        //public int ComprobarBDExiste()
-        //{
-        //    Conexion con = new Conexion();
-        //    if (con.ComprobarBDExiste() != 1)
-        //    {
-        //        CreateDataBase();
-        //        return 0;
-        //    }
-        //    else
-        //        return 1;
-        //}
-
-        //public void CreateDataBase()
-        //{
-        //    Conexion con = new Conexion();
-        //    con.CreateDataBase();
-        //}
-        public void UpdateDb()
+        public int ComprobarBDExiste()
         {
             Conexion con = new Conexion();
-            con.UpdateBD();
+            int res = con.ComprobarBDExiste();
+            if (res == 0)
+            {
+                con.CreateDataBase();
+                return 0;
+            }
+            else if (res == 1)
+                return 1;
+            else 
+                return -1;
+        }
+
+        public void CreateDataBase()
+        {
+            Conexion con = new Conexion();
+            con.CreateDataBase();
         }
     }
 }

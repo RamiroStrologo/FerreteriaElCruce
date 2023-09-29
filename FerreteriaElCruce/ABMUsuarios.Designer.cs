@@ -120,7 +120,7 @@
             this.txtClave.Location = new System.Drawing.Point(14, 133);
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
-            this.txtClave.Size = new System.Drawing.Size(100, 27);
+            this.txtClave.Size = new System.Drawing.Size(100, 31);
             this.txtClave.TabIndex = 6;
             this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
             // 
@@ -129,7 +129,7 @@
             this.txtClaveRep.Location = new System.Drawing.Point(196, 133);
             this.txtClaveRep.Name = "txtClaveRep";
             this.txtClaveRep.PasswordChar = '*';
-            this.txtClaveRep.Size = new System.Drawing.Size(100, 27);
+            this.txtClaveRep.Size = new System.Drawing.Size(100, 31);
             this.txtClaveRep.TabIndex = 7;
             this.txtClaveRep.Validated += new System.EventHandler(this.txtClaveRep_Validated);
             // 
@@ -137,7 +137,7 @@
             // 
             this.txtNomUsr.Location = new System.Drawing.Point(14, 62);
             this.txtNomUsr.Name = "txtNomUsr";
-            this.txtNomUsr.Size = new System.Drawing.Size(100, 27);
+            this.txtNomUsr.Size = new System.Drawing.Size(100, 31);
             this.txtNomUsr.TabIndex = 5;
             this.txtNomUsr.Validated += new System.EventHandler(this.txtNomUsr_Validated);
             // 
@@ -146,7 +146,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(192, 104);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 20);
+            this.label4.Size = new System.Drawing.Size(200, 25);
             this.label4.TabIndex = 4;
             this.label4.Text = "Repetir contraseña:";
             // 
@@ -159,7 +159,7 @@
             "Empleado"});
             this.cmbRol.Location = new System.Drawing.Point(196, 61);
             this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(100, 28);
+            this.cmbRol.Size = new System.Drawing.Size(100, 33);
             this.cmbRol.TabIndex = 8;
             this.cmbRol.Validated += new System.EventHandler(this.cmbRol_Validated);
             // 
@@ -168,7 +168,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(192, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 20);
+            this.label3.Size = new System.Drawing.Size(50, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Rol:";
             // 
@@ -177,7 +177,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 20);
+            this.label2.Size = new System.Drawing.Size(129, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña:";
             // 
@@ -186,7 +186,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(93, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
@@ -224,6 +224,7 @@
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Location = new System.Drawing.Point(172, 23);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.RowHeadersWidth = 51;
             this.dgvUsuarios.RowTemplate.Height = 24;
@@ -233,7 +234,7 @@
             // 
             // ABMUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(213)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(539, 506);

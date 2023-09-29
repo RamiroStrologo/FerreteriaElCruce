@@ -4,3 +4,9 @@ C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Release\Datos.csproj.Assembl
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Release\Datos.dll
 C:\Users\Ramiro\Desktop\FerreteriaElCruce\Datos\obj\Release\Datos.pdb
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\bin\Release\Datos.dll
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\bin\Release\Datos.pdb
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\obj\Release\Datos.csproj.AssemblyReference.cache
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\obj\Release\Datos.dll
+C:\Users\ramir\OneDrive\Escritorio\FerreteriaElCruce\Datos\obj\Release\Datos.pdb

@@ -168,5 +168,12 @@ namespace FerreteriaElCruce
             if (e.KeyChar == '\'')
                 e.Handled = true;
         }
+
+        private void btn_recargar_Click(object sender, EventArgs e)
+        {
+            txtBuscador.Text = "";
+            chkStockMinimo.Checked = false;
+            CargarGrilla();
+        }
     }
 }

@@ -286,5 +286,11 @@
   <ItemGroup>
     <None Include="Resources\profile-icon-login-head-icon-vector.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload_ico.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

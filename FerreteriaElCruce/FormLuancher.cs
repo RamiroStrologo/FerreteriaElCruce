@@ -100,10 +100,12 @@ namespace FerreteriaElCruce
         private void FormLuancher_Load(object sender, EventArgs e)
         {
             db = new DataBase();
-            db.UpdateDb();
-            //int res = db.ComprobarBDExiste();
-            //if (res == 0)
-            //    MessageBox.Show("Se creó la base de dato con éxito", "Base de datos creada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            int res = db.ComprobarBDExiste();
+            if (res == 0)
+                MessageBox.Show("Se creó la base de dato con éxito", "Base de datos creada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else if (res == -1)
+                MessageBox.Show("Error al intentar conectarse al servidor.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void btnCompras_Click(object sender, EventArgs e)
