@@ -36,7 +36,9 @@ namespace FerreteriaElCruce
         private void CargarGrilla()
         {
             producto = new Producto();
+
             dgvInventario.DataSource = producto.ConsultaProductosDatos();
+            dgvInventario.DefaultCellStyle.Font = new Font("Tahoma", 16);
             StockMarcas();
         }
         private void StockMarcas()
@@ -76,34 +78,26 @@ namespace FerreteriaElCruce
 
         private void chkStockMinimo_CheckedChanged(object sender, EventArgs e)
         {
-            try
+            if (chkStockMinimo.Checked)
             {
-                dgvInventario.SuspendLayout();
-                dgvInventario.ClearSelection();
-                if (chkStockMinimo.Checked)
+                producto = new Producto();
+                DataTable dtRes = new DataTable();
+                dtRes = producto.ConsultaProductosDatosXStockMin();
+                if (dtRes != null)
                 {
-
-                    for (int i = 0; i <= dgvInventario.Rows.Count - 1; i++)
-                    {
-                        if (dgvInventario[4, i].Style.BackColor != Color.Red && dgvInventario[4, i].Style.BackColor != Color.Orange)
-                        {
-                            dgvInventario.Rows[i].Visible = false;
-                        }
-                    }
+                    dgvInventario.DataSource = dtRes;
+                    StockMarcas();
                 }
                 else
                 {
-                    for (int i = 0; i <= dgvInventario.Rows.Count - 1; i++)
-                         dgvInventario.Rows[i].Visible = true;
-
+                    MessageBox.Show("No hay filas para ocultar o no hay filas con registros resaltados (Stock en mínimo o umbral)");
+                    chkStockMinimo.Checked = false;
                 }
             }
-            catch(InvalidOperationException er)
-            {
-                MessageBox.Show("No hay filas para ocultar o no hay filas con registros resaltados(Stock en mínimo o umbral)", er.Message);
-                chkStockMinimo.Checked = false;
-            }
-       
+            else
+                CargarGrilla();
+         
+
         }
 
         private void txtBuscador_TextChanged(object sender, EventArgs e)
@@ -174,6 +168,11 @@ namespace FerreteriaElCruce
             txtBuscador.Text = "";
             chkStockMinimo.Checked = false;
             CargarGrilla();
+        }
+
+        private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

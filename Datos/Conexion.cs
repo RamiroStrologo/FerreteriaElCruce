@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Diagnostics;
+using System.Collections;
 
 namespace Datos
 {
@@ -19,15 +20,16 @@ namespace Datos
         {
             string server = ".\\" + System.Environment.UserName;
             //Servidor SQL Server - Base de Datos
-            //string strConexion = @"data source=RAMIRO\RAMIRO;initial catalog=ferrta_elcruce_db;integrated security=true";
-            string strConexion = @"Data Source=192.168.0.105;initial catalog=ferrta_elcruce_db;User Id=dante;Password=dante";
+            string strConexion = @"data source=RAMIRO\RAMIRO;initial catalog=ferrta_elcruce_db;integrated security=true";
+            //string strConexion = @"Data Source=DESKTOP-VPS7PHR\SQLEXPRESS;initial catalog=ferrta_elcruce_db;integrated security=true";
             this.Conector = new SqlConnection(strConexion);
         }
+        //LOGICA AUXILIAR
         public int ComprobarBDExiste()
         {
             try
             {
-               
+
                 string con = this.Conector.ConnectionString;
                 using (SqlConnection connection = new SqlConnection(con))
                 {
@@ -42,7 +44,7 @@ namespace Datos
             {
                 return -1;
             }
-       
+
 
         }
         public void CreateDataBase()
@@ -283,7 +285,7 @@ GO
 INSERT INTO usuario VALUES ('Admin', 'admin', 'admin', 1) 
 ";
             string con = this.Conector.ConnectionString;
-            
+
             using (SqlConnection connection = new SqlConnection(con))
             {
                 try
@@ -306,9 +308,52 @@ INSERT INTO usuario VALUES ('Admin', 'admin', 'admin', 1)
                 }
             }
         }
+        public bool BackUpBd()
+        {
+            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string desktopPath = "C:\\Program Files\\Microsoft SQL Server\\MSSQL16.RAMIRO\\MSSQL\\Backup";
+            string backupQuery = $"BACKUP DATABASE ferrta_elcruce_db TO DISK = '{desktopPath}'";
+            try
+            {
+                var Comando = new SqlCommand(backupQuery, this.Conector);
+                this.Conector.Open();
+                Comando.ExecuteNonQuery();
+                this.Conector.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
 
+        }
+        public void CorregirCodigoProdcutos()
+        {
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
 
-            public DataTable ObtenerRegistros(string query)
+            dt = ObtenerRegistros("SELECT producto_id, producto_codigo FROM Producto WHERE producto_codigo LIKE 'B%'");
+            dt2 = ObtenerRegistros("SELECT producto_id, producto_codigo FROM Producto WHERE producto_codigo LIKE 'C%'");
+            dt3 = ObtenerRegistros("SELECT producto_id, producto_codigo FROM Producto WHERE producto_codigo LIKE 'G%'");
+
+            for (int i = 0; i <= dt3.Rows.Count - 1; i++)
+            {
+
+                //string query = $"UPDATE Producto SET producto_codigo = 'B{i + 1}' FROM Producto WHERE producto_id = {dt.Rows[i][0]}";
+                // EjecutarAccion(query);
+                //string query2 = $"UPDATE Producto SET producto_codigo = 'C{i + 1}' FROM Producto WHERE producto_id = {dt2.Rows[i][0]}";
+                //EjecutarAccion(query2);
+                string query3 = $"UPDATE Producto SET producto_codigo = 'G{i + 1}' FROM Producto WHERE producto_id = {dt3.Rows[i][0]}";
+                EjecutarAccion(query3);
+
+            }
+
+        }
+
+        //LOGICA AUXILIAR
+
+        public DataTable ObtenerRegistros(string query)
         {
             var Comando = new SqlCommand(query, this.Conector);
 

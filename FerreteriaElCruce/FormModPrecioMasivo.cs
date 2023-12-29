@@ -77,17 +77,18 @@ namespace FerreteriaElCruce
                 dgvProductosMarca[6, i].Value = dtConsulta.Rows[i][4];
                 dgvProductosMarca[7, i].Value = dtConsulta.Rows[i][5];
             }
+            dgvProductosMarca.DefaultCellStyle.Font = new Font("Tahoma", 16);
         }
 
         private void txtAumento_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verificar si el carácter presionado es un número o la tecla de retroceso
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
             {
                 e.Handled = true; // Cancelar el evento para evitar que el carácter se muestre en el TextBox
             }
-            else if(txtAumento.Text == "0")
-                txtAumento.SelectionStart = 1;
+            //else if(txtAumento.Text == "0")
+            //    txtAumento.SelectionStart = 1;
         }
 
         private void txtAumento_TextChanged(object sender, EventArgs e)
@@ -102,30 +103,36 @@ namespace FerreteriaElCruce
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            DialogResult dr = new DialogResult();
-            dr = MessageBox.Show("Se realizará el cálculo sobre los registros seleccionados", "Calcular descuento", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if(dr == DialogResult.OK)
+            if (float.TryParse(txtAumento.Text, out float result))
             {
-                Cursor.Current = Cursors.WaitCursor;
-                if (txtAumento.Text != "0")
+                DialogResult dr = new DialogResult();
+                dr = MessageBox.Show("Se realizará el cálculo sobre los registros seleccionados", "Calcular descuento", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dr == DialogResult.OK)
                 {
-                    for (int i = 0; i <= dgvProductosMarca.Rows.Count - 1; i++)
+                    Cursor.Current = Cursors.WaitCursor;
+                    if (txtAumento.Text != "0")
                     {
-                        if (Convert.ToBoolean(dgvProductosMarca.Rows[i].Cells[8].Value) == true)
+                        for (int i = 0; i <= dgvProductosMarca.Rows.Count - 1; i++)
                         {
-                            dgvProductosMarca[3, i].Value = (Convert.ToSingle(dgvProductosMarca[2, i].Value, culture) * ((Convert.ToSingle(txtAumento.Text) / 100) + 1)).ToString("0.##", CultureInfo.InvariantCulture);
-                            dgvProductosMarca[5, i].Value = (Convert.ToSingle(dgvProductosMarca[3, i].Value, culture) * ((Convert.ToSingle(dgvProductosMarca[6, i].Value) / 100) + 1)).ToString("0.##", CultureInfo.InvariantCulture);
-                            dgvProductosMarca.Rows[i].Cells[3].Style.BackColor = Color.GreenYellow;
-                            dgvProductosMarca.Rows[i].Cells[5].Style.BackColor = Color.GreenYellow;
+                            if (Convert.ToBoolean(dgvProductosMarca.Rows[i].Cells[8].Value) == true)
+                            {
+                                dgvProductosMarca[3, i].Value = (Convert.ToSingle(dgvProductosMarca[2, i].Value, culture) * ((Convert.ToSingle(txtAumento.Text) / 100) + 1)).ToString("0.##", CultureInfo.InvariantCulture);
+                                dgvProductosMarca[5, i].Value = (Convert.ToSingle(dgvProductosMarca[3, i].Value, culture) * ((Convert.ToSingle(dgvProductosMarca[6, i].Value) / 100) + 1)).ToString("0.##", CultureInfo.InvariantCulture);
+                                dgvProductosMarca.Rows[i].Cells[3].Style.BackColor = Color.GreenYellow;
+                                dgvProductosMarca.Rows[i].Cells[5].Style.BackColor = Color.GreenYellow;
+                            }
                         }
+                        btnCalcular.Enabled = false;
+                        txtAumento.Enabled = false;
+                        cmbMarcasMod.Enabled = false;
+                        rdbMarca.Enabled = false;
+                        rdbProv.Enabled = false;
                     }
-                    btnCalcular.Enabled = false;
-                    txtAumento.Enabled = false;
-                    cmbMarcasMod.Enabled = false;
-                    rdbMarca.Enabled = false;
-                    rdbProv.Enabled = false;
                 }
-            }           
+            }
+            else
+                MessageBox.Show("El dato ingresado no es valido", "Calculo fallido ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             Cursor.Current = Cursors.Default;
         }
 
@@ -213,6 +220,24 @@ namespace FerreteriaElCruce
                 lblAtributo.Text = "Marcas:";
             else
                 lblAtributo.Text = "Prov.:";
+        }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkSelectAll.Checked)
+            {
+                for(int i = 0; i <= dgvProductosMarca.Rows.Count -1 ; i++)
+                {
+                    dgvProductosMarca[8, i].Value = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i <= dgvProductosMarca.Rows.Count - 1; i++)
+                {
+                    dgvProductosMarca[8, i].Value = false;
+                }
+            }
         }
     }
 }

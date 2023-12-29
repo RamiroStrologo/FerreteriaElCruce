@@ -44,10 +44,11 @@
             this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfig.Enabled = false;
-            this.btnConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfig.Location = new System.Drawing.Point(670, 12);
+            this.btnConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfig.Location = new System.Drawing.Point(895, 13);
+            this.btnConfig.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(161, 340);
+            this.btnConfig.Size = new System.Drawing.Size(225, 566);
             this.btnConfig.TabIndex = 5;
             this.btnConfig.Text = "ADMIN";
             this.btnConfig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -61,10 +62,11 @@
             this.btnInformes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInformes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInformes.Enabled = false;
-            this.btnInformes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInformes.Location = new System.Drawing.Point(503, 12);
+            this.btnInformes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInformes.Location = new System.Drawing.Point(675, 13);
+            this.btnInformes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnInformes.Name = "btnInformes";
-            this.btnInformes.Size = new System.Drawing.Size(161, 340);
+            this.btnInformes.Size = new System.Drawing.Size(225, 566);
             this.btnInformes.TabIndex = 4;
             this.btnInformes.Text = "INFORMES";
             this.btnInformes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -78,10 +80,11 @@
             this.btnInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnInventario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInventario.Enabled = false;
-            this.btnInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventario.Location = new System.Drawing.Point(336, 12);
+            this.btnInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventario.Location = new System.Drawing.Point(453, 13);
+            this.btnInventario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(161, 340);
+            this.btnInventario.Size = new System.Drawing.Size(225, 566);
             this.btnInventario.TabIndex = 3;
             this.btnInventario.Text = "INVENTARIO";
             this.btnInventario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -95,10 +98,11 @@
             this.btnCompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCompras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCompras.Enabled = false;
-            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompras.Location = new System.Drawing.Point(169, 12);
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompras.Location = new System.Drawing.Point(231, 13);
+            this.btnCompras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(161, 340);
+            this.btnCompras.Size = new System.Drawing.Size(225, 566);
             this.btnCompras.TabIndex = 2;
             this.btnCompras.Text = "COMPRAS";
             this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -112,11 +116,12 @@
             this.btnVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVentas.Enabled = false;
-            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnVentas.Location = new System.Drawing.Point(2, 12);
+            this.btnVentas.Location = new System.Drawing.Point(9, 13);
+            this.btnVentas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(161, 340);
+            this.btnVentas.Size = new System.Drawing.Size(225, 566);
             this.btnVentas.TabIndex = 1;
             this.btnVentas.TabStop = false;
             this.btnVentas.Text = "VENTAS";
@@ -130,10 +135,11 @@
             this.btnSesion.BackgroundImage = global::FerreteriaElCruce.Properties.Resources.profile_icon_login_head_icon_vector;
             this.btnSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSesion.Location = new System.Drawing.Point(837, 12);
+            this.btnSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSesion.Location = new System.Drawing.Point(1113, 13);
+            this.btnSesion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSesion.Name = "btnSesion";
-            this.btnSesion.Size = new System.Drawing.Size(161, 340);
+            this.btnSesion.Size = new System.Drawing.Size(225, 566);
             this.btnSesion.TabIndex = 6;
             this.btnSesion.Text = "INICIAR SESIÓN";
             this.btnSesion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -142,11 +148,11 @@
             // 
             // FormLuancher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(213)))), ((int)(((byte)(240)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(999, 357);
+            this.ClientSize = new System.Drawing.Size(1350, 582);
             this.Controls.Add(this.btnSesion);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnInformes);
@@ -154,6 +160,7 @@
             this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.btnVentas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "FormLuancher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

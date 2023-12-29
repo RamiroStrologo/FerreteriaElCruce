@@ -43,9 +43,10 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(202)))), ((int)(((byte)(240)))));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Location = new System.Drawing.Point(160, 285);
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnSalir.Location = new System.Drawing.Point(272, 307);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(227, 35);
+            this.btnSalir.Size = new System.Drawing.Size(302, 35);
             this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -54,9 +55,10 @@
             // 
             this.btnIniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(202)))), ((int)(((byte)(240)))));
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnIniciar.Location = new System.Drawing.Point(160, 244);
+            this.btnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnIniciar.Location = new System.Drawing.Point(272, 266);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(227, 35);
+            this.btnIniciar.Size = new System.Drawing.Size(302, 35);
             this.btnIniciar.TabIndex = 3;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = false;
@@ -65,41 +67,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 191);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Location = new System.Drawing.Point(129, 210);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 25);
+            this.label1.Size = new System.Drawing.Size(130, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "Contraseña:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 144);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label2.Location = new System.Drawing.Point(166, 166);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 25);
+            this.label2.Size = new System.Drawing.Size(93, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Usuario:";
             // 
             // txtContrasenia
             // 
-            this.txtContrasenia.Location = new System.Drawing.Point(160, 188);
+            this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.txtContrasenia.Location = new System.Drawing.Point(272, 210);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.PasswordChar = '*';
-            this.txtContrasenia.Size = new System.Drawing.Size(227, 31);
+            this.txtContrasenia.Size = new System.Drawing.Size(302, 32);
             this.txtContrasenia.TabIndex = 2;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(160, 141);
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.txtUsuario.Location = new System.Drawing.Point(272, 163);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(227, 31);
+            this.txtUsuario.Size = new System.Drawing.Size(302, 32);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsuario_Validating);
             // 
             // picLogoUser
             // 
             this.picLogoUser.Image = global::FerreteriaElCruce.Properties.Resources.profile_icon_login_head_icon_vector;
-            this.picLogoUser.Location = new System.Drawing.Point(160, 39);
+            this.picLogoUser.Location = new System.Drawing.Point(319, 61);
             this.picLogoUser.Name = "picLogoUser";
             this.picLogoUser.Size = new System.Drawing.Size(227, 96);
             this.picLogoUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,20 +115,21 @@
             // lblErr
             // 
             this.lblErr.AutoSize = true;
+            this.lblErr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.lblErr.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblErr.Location = new System.Drawing.Point(393, 144);
+            this.lblErr.Location = new System.Drawing.Point(596, 163);
             this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(187, 25);
+            this.lblErr.Size = new System.Drawing.Size(188, 26);
             this.lblErr.TabIndex = 7;
             this.lblErr.Text = "Usuario incorrecto";
             this.lblErr.Visible = false;
             // 
             // FormSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(213)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(580, 341);
+            this.ClientSize = new System.Drawing.Size(805, 443);
             this.Controls.Add(this.lblErr);
             this.Controls.Add(this.picLogoUser);
             this.Controls.Add(this.txtUsuario);

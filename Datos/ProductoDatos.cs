@@ -29,7 +29,8 @@ namespace Datos
         public string ObtenerUltimoCodXPasillo(string pasillo)
         {
             conexion = new Conexion();
-            string query = $"SELECT MAX(producto_codigo) FROM Producto WHERE producto_codigo LIKE '{pasillo}%'";       
+            //string query = $"SELECT MAX(producto_codigo) FROM Producto WHERE producto_codigo LIKE '{pasillo}%'";       
+            string query = $"SELECT MAX(CAST(SUBSTRING(producto_codigo, 2, LEN(producto_codigo) - 1) AS INT))\r\nFROM Producto\r\nWHERE producto_codigo LIKE '{pasillo}%'";
             return conexion.ObtenerRegistroUnico(query).ToString(); 
         }
         public int ModificarProducto(string descripcion, float precioCompra, float porcGanancia, float precioFinal, int stockMin, int cantStock ,int pId, int nId, int mId, int prodId, string newProdId)
@@ -58,6 +59,13 @@ namespace Datos
             dtConsultas = new DataTable();
             conexion = new Conexion();
             string query = "SELECT prod.producto_Id, producto_codigo AS Código, prod.nombre_producto AS Descripción, prod.stock_minimo AS 'Stock Minimo', prod.cantidad_producto AS 'Cant. en Existencia', prod.precio_compra AS '$ Compra', prod.porc_ganancia AS '% de Ganancia', prod.precio_final AS '$ Venta', prov.nombre_proveedor AS Proveedor, n.nombre_nicho AS Nicho, m.nombre_marca AS Marca FROM Producto prod INNER JOIN Proveedor prov ON prod.proveedor_id = prov.proveedor_id INNER JOIN Marca m ON m.marca_id = prod.marca_id INNER JOIN Nicho n ON n.nicho_id = prod.nicho_id";
+            return conexion.ObtenerRegistros(query);
+        }
+        public DataTable ConsultaProductosDatosXStockMin()
+        {
+            dtConsultas = new DataTable();
+            conexion = new Conexion();
+            string query = "SELECT prod.producto_Id, producto_codigo AS Código, prod.nombre_producto AS Descripción, prod.stock_minimo AS 'Stock Minimo', prod.cantidad_producto AS 'Cant. en Existencia', prod.precio_compra AS '$ Compra', prod.porc_ganancia AS '% de Ganancia', prod.precio_final AS '$ Venta', prov.nombre_proveedor AS Proveedor, n.nombre_nicho AS Nicho, m.nombre_marca AS Marca FROM Producto prod INNER JOIN Proveedor prov ON prod.proveedor_id = prov.proveedor_id INNER JOIN Marca m ON m.marca_id = prod.marca_id INNER JOIN Nicho n ON n.nicho_id = prod.nicho_id WHERE cantidad_producto <= (stock_minimo * 1.3)";
             return conexion.ObtenerRegistros(query);
         }
         public DataTable ConsultarProductoSeleccionado(int prodId)

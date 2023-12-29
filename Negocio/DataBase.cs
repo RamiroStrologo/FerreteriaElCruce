@@ -9,9 +9,12 @@ namespace Negocio
 {
     public class DataBase
     {
+        Conexion con;
+        public DataBase() {
+            con = new Conexion();
+        }
         public int ComprobarBDExiste()
         {
-            Conexion con = new Conexion();
             int res = con.ComprobarBDExiste();
             if (res == 0)
             {
@@ -26,8 +29,15 @@ namespace Negocio
 
         public void CreateDataBase()
         {
-            Conexion con = new Conexion();
             con.CreateDataBase();
+        }
+        public bool BackUpBd()
+        {
+            return con.BackUpBd();
+        }
+        public void CorregirCodigoProducto()
+        {
+            con.CorregirCodigoProdcutos();
         }
     }
 }

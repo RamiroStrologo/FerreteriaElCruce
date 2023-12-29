@@ -61,13 +61,14 @@ namespace FerreteriaElCruce
                 labelModificar.Width = label1.Width;
                 labelModificar.Height = label1.Height;
                 labelModificar.Text = "Producto:";
+                labelModificar.Font = new Font("Tahoma", 16);
                 this.Controls.Add(labelModificar);
                 /////////////////////////
                 btnAddMarca.Visible = false;
                 btnAddNicho.Visible = false;
                 btnAddProv.Visible = false;
                 btnCargarProducto.Text = "Modificar";
-                btnCargaryVolverProd.Text = "Mordificar y volver";
+                btnCargaryVolverProd.Text = "Modificar y volver";
                 CargarProducto(cmbProducto);
 
             }
@@ -93,7 +94,7 @@ namespace FerreteriaElCruce
         public void AltaProducto()
         {
             producto.descripcion = txtDescProducto.Text;
-            producto.precioCompra = precioCompra;
+            producto.precioCompra = Convert.ToSingle(txtPrecioCompraProducto.Text.Substring(1));
             producto.porcGanancia = porcGanancia;
             producto.precioFinal = precioFinal;
             producto.stockMin = Convert.ToInt32(txtStockMinimoProducto.Text);
@@ -166,7 +167,7 @@ namespace FerreteriaElCruce
             txtStockMinimoProducto.Text = "0";
             txtCantStock.Text = "0";
             txtPasillo.Text = "";
-            txtDesc.Text = "";
+            txtDesc.Text = "0";
             cmbProveedor.SelectedIndex = -1;
             cmbNicho.SelectedIndex = -1;
             cmbMarca.SelectedIndex = -1;
@@ -231,8 +232,7 @@ namespace FerreteriaElCruce
             if (validar)
             {
                 ConfirmarOperacion();
-                if (!Modificar)
-                    ReiniciarForm();
+                ReiniciarForm();
             }
             else
                 MessageBox.Show(this, "Debe completar todos los campos para realizar la carga", "Operación fallida", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -514,6 +514,7 @@ namespace FerreteriaElCruce
             {
                 float valueP;
                 valueP = (Convert.ToSingle(txtPrecioCompraProducto.Text.Split('$')[1]) - (precioCompra * (Convert.ToSingle(txtDesc.Text) / 100)));
+                //precioCompra = valueP;
                 txtPrecioCompraProducto.Text = valueP.ToString("C", CultureInfo.GetCultureInfo("es-AR"));
                 txtPrecioCompraProducto_Validating(null, null);
                 txtProcGananciaProducto_Validating(null, null);

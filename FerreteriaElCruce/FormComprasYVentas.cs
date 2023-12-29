@@ -91,6 +91,7 @@ namespace FerreteriaElCruce
                 lnkVentas.Visible = true;
                 btnAceptar.Enabled = false;
                 lblNumeroVenta.Text += " " + producto.GenerarNroVenta().ToString();
+                gpbResumenVenta.Visible = true;
             }
 
         }
@@ -423,10 +424,11 @@ namespace FerreteriaElCruce
         }
         private void txtPrecioCambiar_Validating(object sender, CancelEventArgs e)
         {
+
             if(txtDescuento.Text == "0")
             {
                 producto = new Producto();
-                producto.precioCompra = Convert.ToInt32(txtPrecioCambiar.Text);
+                producto.precioCompra = Convert.ToSingle(txtPrecioCambiar.Text);
                 producto.productoId = Convert.ToInt32(cmbProducto.SelectedValue);
                 producto.CambiarPrecioCompra();
                 precio = Convert.ToSingle(txtPrecioCambiar.Text);
@@ -673,6 +675,11 @@ namespace FerreteriaElCruce
                 cmbProducto.ValueMember = "producto_id";
                 AutoCompletarCombos(cmbProducto);
             }
+        }
+
+        private void lblRdesctot_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 

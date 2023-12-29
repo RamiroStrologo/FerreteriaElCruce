@@ -24,6 +24,7 @@ namespace FerreteriaElCruce
         public int productoIdMod { get; set; } = 0;
         public string productoNomMod { get; set; } = "";
         Producto producto;
+        DataBase db;
         public FormConfiguracion()
         {
             InitializeComponent();
@@ -176,6 +177,16 @@ namespace FerreteriaElCruce
             pnlPantallasConfg.Controls.Add(fh);
             pnlPantallasConfg.Tag = fh;
             fh.Show();
+        }
+
+        private void lnkBackUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            db = new DataBase();
+            Cursor.Current = Cursors.WaitCursor;
+            bool res = db.BackUpBd();
+            Cursor.Current = Cursors.Default;
+            string msj = res ? "Base de datos respaldada con éxito" : "Error al conectar con la Base de Datos";
+            MessageBox.Show(msj, "BackUp Data Base");
         }
     }
 }

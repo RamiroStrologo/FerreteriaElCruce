@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Datos;
+using System.Runtime.Remoting.Messaging;
 
 namespace Negocio
 {
@@ -48,12 +49,12 @@ namespace Negocio
         {
             pDatos = new ProductoDatos();
             int aumentId = 0;
-            string producto_id = pDatos.ObtenerUltimoCodXPasillo(pasillo);
+            string producto_id = pDatos.ObtenerUltimoCodXPasillo(pasillo).ToString();
             if (producto_id != "")
             {
-                aumentId = Convert.ToInt32(producto_id.Substring(1));
+                aumentId = Convert.ToInt32(producto_id);
                 aumentId++;
-                producto_id = producto_id.Replace(producto_id.Substring(1), aumentId.ToString());
+                producto_id = pasillo + aumentId;
             }
             else
                 producto_id = pasillo + "1";
@@ -65,7 +66,7 @@ namespace Negocio
             string compararPasillo = pDatos.ObtenerUltimoCodXPasillo(pasillo);
             if (compararPasillo == "")
                 compararPasillo = pasillo;
-            if (productoCodigo.Substring(0, 1) != compararPasillo.Substring(0,1))
+            if (productoCodigo.Substring(0, 1) != pasillo)
             {
                 newProdCod = AsignarCodXPasillo();
             }
@@ -91,6 +92,14 @@ namespace Negocio
         {
             pDatos = new ProductoDatos();
             return pDatos.ConsultaProductosDatos();
+        }
+        public DataTable ConsultaProductosDatosXStockMin()
+        {
+            pDatos = new ProductoDatos();
+            DataTable dtProdStockMin = new DataTable();
+            dtProdStockMin = pDatos.ConsultaProductosDatosXStockMin();
+            return dtProdStockMin.Rows.Count > 0 ? dtProdStockMin : null;
+
         }
         public DataTable ConsultarProductoSeleccionado()
         {
